@@ -1,0 +1,82 @@
+{
+  "files.associations": {
+    "*.tcc": "cpp"
+  },
+  "cSpell.words": [
+    "accum",
+    "aprs",
+    "Automator",
+    "Ccys",
+    "Charka",
+    "counterparty",
+    "Ddirfi",
+    "devnet",
+    "Firestore",
+    "formated",
+    "hoverable",
+    "isei",
+    "livelybone",
+    "memonized",
+    "nextjs",
+    "Optimus",
+    "pfast",
+    "pfastusd",
+    "promt",
+    "PSEI",
+    "reduxjs",
+    "sepolia",
+    "Solflare",
+    "Strat",
+    "susda",
+    "tanstack",
+    "Toastify",
+    "uidotdev",
+    "usehooks",
+    "uuidv",
+    "viem",
+    "wagmi",
+    "xywh"
+  ],
+  "editor.fontSize": 18,
+  "deno.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "vs-code-prettier-eslint.prettierLast": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // ESLint configuration
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
+  "eslint.problemPatterns": ["$eslint-stylish"],
+  "eslint.useESLintClass": false,
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc.js"
+  },
+  "eslint.packageManager": "npm",
+  "prettier.requireConfig": true,
+  "compile-hero.disable-compile-files-on-did-save-code": false,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  }
+}
