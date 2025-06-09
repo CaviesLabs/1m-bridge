@@ -83,22 +83,28 @@ export function FAQSection() {
       <CardContent className="space-y-4">
         {faqs.map((faq, index) => (
           <Collapsible key={index}>
-            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors">
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
               <span className="font-medium text-left">{faq.question}</span>
               <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform duration-200 ui-open:rotate-180" />
             </CollapsibleTrigger>
             <AnimatePresence>
-              <CollapsibleContent asChild>
+              <CollapsibleContent>
                 <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto" }}
+                  exit={{ height: 0 }}
+                  transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="p-4 text-muted-foreground">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="p-4 text-muted-foreground"
+                  >
                     {faq.answer}
-                  </div>
+                  </motion.div>
                 </motion.div>
               </CollapsibleContent>
             </AnimatePresence>

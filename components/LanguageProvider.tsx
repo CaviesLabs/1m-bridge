@@ -24,6 +24,14 @@ interface Translations {
   claimTokensDescription: string;
   active: string;
   pending: string;
+  completed: string;
+  
+  // Bridge Flow
+  bridgeTokensToDestination: string;
+  signingTransaction: string;
+  claimTokensOnDestination: string;
+  transactionSigned: string;
+  readyToClaim: string;
   
   // Bridge Interface
   bridgeInterface: string;
@@ -116,6 +124,14 @@ const translations: Record<Language, Translations> = {
     claimTokensDescription: 'Complete the process by claiming your tokens on the destination chain',
     active: 'Active',
     pending: 'Pending',
+    completed: 'Completed',
+    
+    // Bridge Flow
+    bridgeTokensToDestination: 'Bridge tokens to destination chain',
+    signingTransaction: 'Signing transaction...',
+    claimTokensOnDestination: 'Claim tokens on destination chain',
+    transactionSigned: 'Transaction signed',
+    readyToClaim: 'Ready to claim',
     
     // Bridge Interface
     bridgeInterface: 'Bridge Interface',
@@ -207,6 +223,14 @@ const translations: Record<Language, Translations> = {
     claimTokensDescription: 'Hoàn thành quá trình bằng cách nhận token trên blockchain đích',
     active: 'Đang hoạt động',
     pending: 'Đang chờ',
+    completed: 'Hoàn thành',
+    
+    // Bridge Flow
+    bridgeTokensToDestination: 'Chuyển token đến blockchain đích',
+    signingTransaction: 'Đang ký giao dịch...',
+    claimTokensOnDestination: 'Nhận token trên blockchain đích',
+    transactionSigned: 'Giao dịch đã được ký',
+    readyToClaim: 'Sẵn sàng nhận',
     
     // Bridge Interface
     bridgeInterface: 'Giao diện cầu nối',
