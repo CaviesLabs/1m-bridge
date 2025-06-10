@@ -10,8 +10,8 @@ import {
   WBTCIcon,
 } from '@/components/icons/ChainIcons';
 import { useBridge } from '@/context/BridgeContext';
-import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpDown, ExternalLink, Info, Loader2, Wallet } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
 import { useLanguage } from './LanguageProvider';
 import { Badge } from './ui/badge';

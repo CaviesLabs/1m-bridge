@@ -7,10 +7,13 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { FAQSection, TermsSection } from './components/InfoSections';
-import { useLanguage } from './components/LanguageProvider';
+import { LanguageProvider, useLanguage } from './components/LanguageProvider';
+import { ThemeProvider } from './components/ThemeProvider';
 import { Badge } from './components/ui/badge';
 import { Card, CardContent } from './components/ui/card';
+import { Toaster } from './components/ui/sonner';
 import { BridgeProvider, useBridge } from './context/BridgeContext';
+import { WalletProvider } from './context/WalletProvider';
 
 function BridgeStepCards() {
   const { t } = useLanguage();
@@ -405,153 +408,164 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <HeroSection />
+      <div className="pt-20">
+        {' '}
+        {/* Add padding to account for fixed header */}
+        <HeroSection />
+        <main className="relative">
+          {/* Bridge Section with Enhanced Layout */}
+          <section className="py-20 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 blur-3xl" />
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
 
-      <main className="relative">
-        {/* Bridge Section with Enhanced Layout */}
-        <section className="py-20 bg-gradient-to-b from-background to-muted/20 relative overflow-hidden">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 blur-3xl" />
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
-
-          <div className="max-w-6xl mx-auto px-6 relative">
-            {/* Bridge Process Overview */}
-            <motion.div
-              className="text-center mb-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              variants={containerVariants}
-            >
+            <div className="max-w-6xl mx-auto px-6 relative">
+              {/* Bridge Process Overview */}
               <motion.div
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-primary/5 text-primary px-6 py-3 rounded-full mb-6 backdrop-blur-sm border border-primary/20"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="text-center mb-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                variants={containerVariants}
               >
-                <Zap className="w-4 h-4" />
-                <span className="font-medium">{t.crossChainBridge}</span>
+                <motion.div
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-primary/5 text-primary px-6 py-3 rounded-full mb-6 backdrop-blur-sm border border-primary/20"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Zap className="w-4 h-4" />
+                  <span className="font-medium">{t.crossChainBridge}</span>
+                </motion.div>
+
+                <motion.h2
+                  className="text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
+                  variants={itemVariants}
+                >
+                  {t.bridgeYourAssets}
+                </motion.h2>
+                <motion.p
+                  className="text-xl text-muted-foreground max-w-2xl mx-auto"
+                  variants={itemVariants}
+                >
+                  {t.bridgeYourAssetsDescription}
+                </motion.p>
               </motion.div>
 
-              <motion.h2
-                className="text-4xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
-                variants={itemVariants}
+              {/* Enhanced Visual Bridge Flow */}
+              <BridgeStepCards />
+
+              {/* Bridge Interface Container */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                {t.bridgeYourAssets}
-              </motion.h2>
-              <motion.p
-                className="text-xl text-muted-foreground max-w-2xl mx-auto"
-                variants={itemVariants}
+                {/* Enhanced background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl blur-3xl transform scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-transparent rounded-3xl" />
+
+                {/* Main Bridge Interface */}
+                <div className="relative">
+                  <BridgeInterface />
+                </div>
+              </motion.div>
+
+              {/* Enhanced Additional Info Cards */}
+              <motion.div
+                className="grid md:grid-cols-3 gap-6 mt-16"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                variants={containerVariants}
               >
-                {t.bridgeYourAssetsDescription}
-              </motion.p>
-            </motion.div>
+                <motion.div variants={cardVariants} whileHover="hover">
+                  <Card className="text-center hover:shadow-lg transition-all duration-300 border-blue-100 dark:border-blue-900/20">
+                    <CardContent className="p-6">
+                      <motion.div
+                        className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        <span className="text-2xl">🔒</span>
+                      </motion.div>
+                      <h4 className="font-semibold mb-2">{t.secure}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {t.secureDescription}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
 
-            {/* Enhanced Visual Bridge Flow */}
-            <BridgeStepCards />
+                <motion.div variants={cardVariants} whileHover="hover">
+                  <Card className="text-center hover:shadow-lg transition-all duration-300 border-green-100 dark:border-green-900/20">
+                    <CardContent className="p-6">
+                      <motion.div
+                        className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
+                        whileHover={{ rotate: -10, scale: 1.1 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        <span className="text-2xl">⚡</span>
+                      </motion.div>
+                      <h4 className="font-semibold mb-2">{t.fast}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {t.fastDescription}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
 
-            {/* Bridge Interface Container */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {/* Enhanced background decoration */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl blur-3xl transform scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/10 to-transparent rounded-3xl" />
-
-              {/* Main Bridge Interface */}
-              <div className="relative">
-                <BridgeInterface />
-              </div>
-            </motion.div>
-
-            {/* Enhanced Additional Info Cards */}
-            <motion.div
-              className="grid md:grid-cols-3 gap-6 mt-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
-              variants={containerVariants}
-            >
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Card className="text-center hover:shadow-lg transition-all duration-300 border-blue-100 dark:border-blue-900/20">
-                  <CardContent className="p-6">
-                    <motion.div
-                      className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
-                      whileHover={{ rotate: 10, scale: 1.1 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                    >
-                      <span className="text-2xl">🔒</span>
-                    </motion.div>
-                    <h4 className="font-semibold mb-2">{t.secure}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {t.secureDescription}
-                    </p>
-                  </CardContent>
-                </Card>
+                <motion.div variants={cardVariants} whileHover="hover">
+                  <Card className="text-center hover:shadow-lg transition-all duration-300 border-purple-100 dark:border-purple-900/20">
+                    <CardContent className="p-6">
+                      <motion.div
+                        className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        <span className="text-2xl">💰</span>
+                      </motion.div>
+                      <h4 className="font-semibold mb-2">{t.rewarding}</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {t.rewardingDescription}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </motion.div>
+            </div>
+          </section>
 
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Card className="text-center hover:shadow-lg transition-all duration-300 border-green-100 dark:border-green-900/20">
-                  <CardContent className="p-6">
-                    <motion.div
-                      className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/20 dark:to-green-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
-                      whileHover={{ rotate: -10, scale: 1.1 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                    >
-                      <span className="text-2xl">⚡</span>
-                    </motion.div>
-                    <h4 className="font-semibold mb-2">{t.fast}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {t.fastDescription}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Card className="text-center hover:shadow-lg transition-all duration-300 border-purple-100 dark:border-purple-900/20">
-                  <CardContent className="p-6">
-                    <motion.div
-                      className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl flex items-center justify-center mx-auto mb-4"
-                      whileHover={{ rotate: 10, scale: 1.1 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                    >
-                      <span className="text-2xl">💰</span>
-                    </motion.div>
-                    <h4 className="font-semibold mb-2">{t.rewarding}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {t.rewardingDescription}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Information Sections */}
-        <section className="py-16 bg-background">
-          <div className="max-w-4xl mx-auto px-6 space-y-16">
-            <TermsSection />
-            <FAQSection />
-          </div>
-        </section>
-      </main>
-
-      <Footer />
+          {/* Information Sections */}
+          <section className="py-16 bg-background">
+            <div className="max-w-4xl mx-auto px-6 space-y-16">
+              <TermsSection />
+              <FAQSection />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>{' '}
+      {/* Close padding div */}
+      {/* Toast Notifications */}
+      <Toaster />
     </div>
   );
 }
 
 export default function App() {
   return (
-    <BridgeProvider>
-      <AppContent />
-    </BridgeProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <WalletProvider>
+          <BridgeProvider>
+            <AppContent />
+          </BridgeProvider>
+        </WalletProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

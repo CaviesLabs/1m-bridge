@@ -66,14 +66,14 @@ export function VaultListings() {
           <CardTitle className="text-2xl">Deposit in Vaults</CardTitle>
         </div>
         <p className="text-muted-foreground">
-          For additional yield, you can deposit your bridged assets into DeFi vaults. 
-          This is optional but can increase your total rewards.
+          For additional yield, you can deposit your bridged assets into DeFi vaults. This is
+          optional but can increase your total rewards.
         </p>
       </CardHeader>
 
       <CardContent>
         <div className="grid gap-4">
-          {vaults.map((vault) => (
+          {vaults.map(vault => (
             <Card key={vault.id} className="bg-muted/30">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
@@ -84,9 +84,7 @@ export function VaultListings() {
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-lg">{vault.token}</span>
-                        <Badge className={getRiskColor(vault.risk)}>
-                          {vault.protocol}
-                        </Badge>
+                        <Badge className={getRiskColor(vault.risk)}>{vault.protocol}</Badge>
                       </div>
                       <div className="flex items-center gap-1 text-sm text-muted-foreground">
                         <span>Contract</span>

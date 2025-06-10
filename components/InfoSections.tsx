@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
@@ -8,14 +8,14 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collap
 
 export function TermsSection() {
   const { t } = useLanguage();
-  
+
   const terms = [
     t.rewardEligibility,
     t.campaignPeriod,
     t.rewardPool,
     t.minimumAmount,
     t.supportedNetworks,
-    t.modifications
+    t.modifications,
   ];
 
   return (
@@ -39,40 +39,40 @@ export function TermsSection() {
 
 export function FAQSection() {
   const { t } = useLanguage();
-  
+
   const faqs = [
     {
       question: t.faqQuestions.bridgeTime,
-      answer: t.faqQuestions.bridgeTimeAnswer
+      answer: t.faqQuestions.bridgeTimeAnswer,
     },
     {
       question: t.faqQuestions.fees,
-      answer: t.faqQuestions.feesAnswer
+      answer: t.faqQuestions.feesAnswer,
     },
     {
       question: t.faqQuestions.safety,
-      answer: t.faqQuestions.safetyAnswer
+      answer: t.faqQuestions.safetyAnswer,
     },
     {
       question: t.faqQuestions.supportedTokens,
-      answer: t.faqQuestions.supportedTokensAnswer
+      answer: t.faqQuestions.supportedTokensAnswer,
     },
     {
       question: t.faqQuestions.rewardCalculation,
-      answer: t.faqQuestions.rewardCalculationAnswer
+      answer: t.faqQuestions.rewardCalculationAnswer,
     },
     {
       question: t.faqQuestions.rewardDistribution,
-      answer: t.faqQuestions.rewardDistributionAnswer
+      answer: t.faqQuestions.rewardDistributionAnswer,
     },
     {
       question: t.faqQuestions.multipleBridges,
-      answer: t.faqQuestions.multipleBridgesAnswer
+      answer: t.faqQuestions.multipleBridgesAnswer,
     },
     {
       question: t.faqQuestions.failedTransaction,
-      answer: t.faqQuestions.failedTransactionAnswer
-    }
+      answer: t.faqQuestions.failedTransactionAnswer,
+    },
   ];
 
   return (
@@ -91,7 +91,7 @@ export function FAQSection() {
               <CollapsibleContent>
                 <motion.div
                   initial={{ height: 0 }}
-                  animate={{ height: "auto" }}
+                  animate={{ height: 'auto' }}
                   exit={{ height: 0 }}
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
