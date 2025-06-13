@@ -1,0 +1,83 @@
+// import { providers } from 'ethers';
+
+// interface CacheEntry {
+//   timestamp: number;
+//   result: any;
+// }
+
+// class RPCCache {
+//   private cache: Map<string, CacheEntry> = new Map();
+//   private readonly TTL = 60 * 1000; // 1 minute in milliseconds
+
+//   private getCacheKey(method: string, params: any[]): string {
+//     return `${method}:${JSON.stringify(params)}`;
+//   }
+
+//   private isExpired(entry: CacheEntry): boolean {
+//     return Date.now() - entry.timestamp > this.TTL;
+//   }
+
+//   public get(method: string, params: any[]): any | null {
+//     const key = this.getCacheKey(method, params);
+//     const entry = this.cache.get(key);
+
+//     if (!entry || this.isExpired(entry)) {
+//       return null;
+//     }
+
+//     return entry.result;
+//   }
+
+//   public set(method: string, params: any[], result: any): void {
+//     const key = this.getCacheKey(method, params);
+//     this.cache.set(key, {
+//       timestamp: Date.now(),
+//       result,
+//     });
+//   }
+
+//   public clear(): void {
+//     this.cache.clear();
+//   }
+// }
+
+// export class CachedJsonRpcProvider extends providers.JsonRpcProvider {
+//   private cache: RPCCache = new RPCCache();
+
+//   constructor(url: string, network?: providers.Networkish) {
+//     super(url, network);
+//   }
+
+//   async send(method: string, params: any[]): Promise<any> {
+//     // Methods that should not be cached
+//     const uncacheableMethods = [
+//       'eth_sendRawTransaction',
+//       'eth_submitTransaction',
+//       'eth_sign',
+//       'eth_signTransaction',
+//       'personal_sign',
+//       'eth_subscribe',
+//       'eth_unsubscribe',
+//       'eth_accounts',
+//     ];
+
+//     // Don't cache write operations or real-time data
+//     if (uncacheableMethods.includes(method)) {
+//       return super.send(method, params);
+//     }
+
+//     // Check cache first
+//     const cachedResult = this.cache.get(method, params);
+//     if (cachedResult !== null) {
+//       return cachedResult;
+//     }
+
+//     // If not in cache, make the actual RPC call
+//     const result = await super.send(method, params);
+
+//     // Cache the result
+//     this.cache.set(method, params, result);
+
+//     return result;
+//   }
+// }

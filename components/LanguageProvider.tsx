@@ -27,10 +27,12 @@ interface Translations {
   active: string;
   pending: string;
   completed: string;
+  bridgeMore: string;
 
   // Bridge Flow
   bridgeTokensToDestination: string;
   signingTransaction: string;
+  signingTransactionDescription: string;
   claimTokensOnDestination: string;
   transactionSigned: string;
   readyToClaim: string;
@@ -44,6 +46,8 @@ interface Translations {
   toChain: string;
   connectSourceWallet: string;
   connectDestinationWallet: string;
+  disconnectSourceWallet: string;
+  disconnectDestinationWallet: string;
   assetAndAmount: string;
   balance: string;
   max: string;
@@ -141,10 +145,11 @@ const translations: Record<Language, Translations> = {
     active: 'Active',
     pending: 'Pending',
     completed: 'Completed',
-
+    bridgeMore: 'Bridge More',
     // Bridge Flow
     bridgeTokensToDestination: 'Bridge tokens to destination chain',
     signingTransaction: 'Signing transaction...',
+    signingTransactionDescription: 'Please check your wallet to sign the transaction.',
     claimTokensOnDestination: 'Claim tokens on destination chain',
     transactionSigned: 'Transaction signed',
     readyToClaim: 'Ready to claim',
@@ -159,6 +164,8 @@ const translations: Record<Language, Translations> = {
     toChain: 'To Chain',
     connectSourceWallet: 'Connect Source Wallet',
     connectDestinationWallet: 'Connect Destination Wallet',
+    disconnectSourceWallet: 'Disconnect Source Wallet',
+    disconnectDestinationWallet: 'Disconnect Destination Wallet',
     assetAndAmount: 'Asset and Amount',
     balance: 'Balance:',
     max: 'Max',
@@ -267,10 +274,11 @@ const translations: Record<Language, Translations> = {
     active: 'Đang hoạt động',
     pending: 'Đang chờ',
     completed: 'Hoàn thành',
-
+    bridgeMore: 'Cầu nối thêm',
     // Bridge Flow
     bridgeTokensToDestination: 'Chuyển token đến blockchain đích',
     signingTransaction: 'Đang ký giao dịch...',
+    signingTransactionDescription: 'Vui lòng kiểm tra ví của bạn để ký giao dịch.',
     claimTokensOnDestination: 'Nhận token trên blockchain đích',
     transactionSigned: 'Giao dịch đã được ký',
     readyToClaim: 'Sẵn sàng nhận',
@@ -285,6 +293,8 @@ const translations: Record<Language, Translations> = {
     toChain: 'Đến blockchain',
     connectSourceWallet: 'Kết nối ví nguồn',
     connectDestinationWallet: 'Kết nối ví đích',
+    disconnectSourceWallet: 'Ngắt kết nối ví nguồn',
+    disconnectDestinationWallet: 'Ngắt kết nối ví đích',
     assetAndAmount: 'Tài sản và số lượng',
     balance: 'Số dư:',
     max: 'Tối đa',

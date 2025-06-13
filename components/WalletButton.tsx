@@ -1,7 +1,10 @@
+import { useBalances } from '@/context/BalanceProvider';
+import { useConnectorRegistry } from '@/context/useConnectorRegistry';
+import { generateAvatar } from '@/context/WalletProvider';
+import { AppNumber } from '@/lib/providers/math/app-number.provider';
 import { ChevronDown, Copy, DollarSign, Loader2, LogOut, Wallet } from 'lucide-react';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
-import { useWallet } from '../context/WalletProvider';
 import { useLanguage } from './LanguageProvider';
 import { Button } from './ui/button';
 import {
@@ -17,35 +20,29 @@ interface WalletButtonProps {
 }
 
 export function WalletButton({ size = 'default', className = '' }: WalletButtonProps) {
-  const {
-    isConnected,
-    isConnecting,
-    walletAddress,
-    shortAddress,
-    balance,
-    avatar,
-    connectWallet,
-    disconnectWallet,
-  } = useWallet();
+  const connector = useConnectorRegistry('evm');
+  const { balances } = useBalances();
+  const nativeBalance = Object.values(balances).find(balance => balance.tokenInfo.symbol === 'SEI');
+
   const { t } = useLanguage();
 
   const handleCopyAddress = async () => {
-    if (walletAddress) {
-      await navigator.clipboard.writeText(walletAddress);
+    if (connector.address) {
+      await navigator.clipboard.writeText(connector.address);
       toast.success('Wallet address copied to clipboard');
     }
   };
 
   // Connect button when not connected
-  if (!isConnected) {
+  if (!connector.isConnected) {
     return (
       <Button
         size={size}
         className={`${className} ${size === 'sm' ? 'h-7 px-3 text-xs' : ''}`}
-        onClick={connectWallet}
-        disabled={isConnecting}
+        onClick={connector.connect}
+        disabled={connector.isConnected}
       >
-        {isConnecting ? (
+        {connector.isConnected ? (
           <>
             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
             {t.connecting || 'Connecting...'}
@@ -82,7 +79,7 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <img
-              src={avatar}
+              src={generateAvatar(connector.address || '')}
               alt="Wallet Avatar"
               className="w-[20px] h-[20px] object-cover rounded-full"
               onError={e => {
@@ -102,7 +99,7 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            {shortAddress}
+            {connector.address?.slice(0, 6)}...{connector.address?.slice(-4)}
           </motion.span>
 
           {/* Dropdown Icon */}
@@ -126,7 +123,7 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium">{t.walletAddress}</div>
               <div className="text-xs text-muted-foreground font-mono truncate">
-                {walletAddress?.slice(0, 6)}...{walletAddress?.slice(-4)}
+                {connector.address?.slice(0, 6)}...{connector.address?.slice(-4)}
               </div>
             </div>
           </DropdownMenuItem>
@@ -140,7 +137,10 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
             </div>
             <div className="flex-1">
               <div className="text-sm font-medium">{t.walletBalance}</div>
-              <div className="text-xs text-muted-foreground">{balance}</div>
+              <div className="text-xs text-muted-foreground">
+                {AppNumber.from(nativeBalance?.balance.toString() || '0').getDisplayedString() +
+                  ' SEI'}
+              </div>
             </div>
           </DropdownMenuItem>
 
@@ -149,7 +149,7 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
           {/* Disconnect */}
           <DropdownMenuItem
             onClick={() => {
-              disconnectWallet();
+              connector.disconnect();
               onClickItem();
             }}
             className="cursor-pointer flex items-center gap-3 p-3 text-destructive focus:text-destructive"

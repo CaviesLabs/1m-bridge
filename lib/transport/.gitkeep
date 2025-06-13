@@ -1,0 +1,47 @@
+// import { type HttpTransport, type RpcRequest, http } from 'viem';
+
+// type CacheEntry = {
+//   response: unknown;
+//   timestamp: number;
+// };
+
+// const cache = new Map<string, CacheEntry>();
+// const CACHE_DURATION = 60 * 1000; // 1 minute in milliseconds
+
+// export function cachedHttp(url: string) {
+//   const baseTransport = http(url);
+
+//   const transport = {
+//     ...baseTransport,
+//     async request({ method, params }: RpcRequest) {
+//       // Only cache read operations (calls and eth_call)
+//       const isReadOperation =
+//         method === 'eth_call' ||
+//         method.startsWith('eth_get') ||
+//         method === 'eth_chainId' ||
+//         method === 'eth_blockNumber';
+
+//       if (!isReadOperation) {
+//         return baseTransport.request({ method, params });
+//       }
+
+//       const cacheKey = JSON.stringify({ url, method, params });
+//       const cached = cache.get(cacheKey);
+//       const now = Date.now();
+
+//       if (cached && now - cached.timestamp < CACHE_DURATION) {
+//         return cached.response;
+//       }
+
+//       const response = await baseTransport.request({ method, params });
+//       cache.set(cacheKey, {
+//         response,
+//         timestamp: now,
+//       });
+
+//       return response;
+//     },
+//   };
+
+//   return transport as HttpTransport;
+// }

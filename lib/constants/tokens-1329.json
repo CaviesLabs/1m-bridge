@@ -1,0 +1,205 @@
+{
+  "lastUpdate": "2024-09-15T14:55:58.354295+07:00",
+  "version": {
+    "major": 0,
+    "minor": 1,
+    "patch": 0
+  },
+  "shouldRefresh": false,
+  "tokens": {
+    "0x0aefc6f2e9a866ddb4813cb1e897a2e9e26a1e53": {
+      "address": "0x0aefc6f2e9a866ddb4813cb1e897a2e9e26a1e53",
+      "underlyingTokensAddresses": [
+        "0x160345fc359604fc6e70e3c5facbde5f7a9342d8"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-pWETH",
+      "symbol": "pWETH",
+      "displayName": "Pit VaultV3-pWETH",
+      "displaySymbol": "pWETH",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://pit.finance/icons/tokens/png/pweth.png",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": ""
+    },
+    "0x160345fc359604fc6e70e3c5facbde5f7a9342d8": {
+      "address": "0x160345fc359604fc6e70e3c5facbde5f7a9342d8",
+      "underlyingTokensAddresses": [],
+      "type": "",
+      "name": "WETH",
+      "symbol": "WETH",
+      "displayName": "WETH",
+      "displaySymbol": "WETH",
+      "description": "",
+      "category": "",
+      "icon": "https://pit.finance/icons/tokens/png/weth.png",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": "weth"
+    },
+    "0x1e3bceb9ad3dc3f80820d29039c1a46e28d3a573": {
+      "address": "0x1e3bceb9ad3dc3f80820d29039c1a46e28d3a573",
+      "underlyingTokensAddresses": [
+        "0xb75d0b03c06a926e488e2659df1a861f860bd3d1"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-pUSDT",
+      "symbol": "pUSDT",
+      "displayName": "Pit VaultV3-pUSDT",
+      "displaySymbol": "pUSDT",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://pit.finance/icons/tokens/png/pusdt.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": ""
+    },
+    "0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1": {
+      "address": "0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1",
+      "underlyingTokensAddresses": [],
+      "type": "",
+      "name": "USDC",
+      "symbol": "USDC",
+      "displayName": "USDC",
+      "displaySymbol": "USDC",
+      "description": "",
+      "category": "",
+      "icon": "https://pit.finance/icons/tokens/png/usdc.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": "usd-coin"
+    },
+    "0x49561c4a905f7accdacaec5e3c17113d5f1c5a3b": {
+      "address": "0x49561c4a905f7accdacaec5e3c17113d5f1c5a3b",
+      "underlyingTokensAddresses": [
+        "0x5cf6826140c1c56ff49c808a1a75407cd1df9423"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-piSEI",
+      "symbol": "piSEI",
+      "displayName": "Pit VaultV3-piSEI",
+      "displaySymbol": "piSEI",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://pit.finance/icons/tokens/png/piisei.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": ""
+    },
+    "0x575e2291c6fde8eef7284cbd7ff17615de75c47b": {
+      "address": "0x575e2291c6fde8eef7284cbd7ff17615de75c47b",
+      "underlyingTokensAddresses": [
+        "0x3894085ef7ff0f0aedf52e2a2704928d1ec074f1"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-pUSDC",
+      "symbol": "pUSDC",
+      "displayName": "Pit VaultV3-pUSDC",
+      "displaySymbol": "pUSDC",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://pit.finance/icons/tokens/png/pusdc.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": ""
+    },
+    "0x5cf6826140c1c56ff49c808a1a75407cd1df9423": {
+      "address": "0x5cf6826140c1c56ff49c808a1a75407cd1df9423",
+      "underlyingTokensAddresses": [],
+      "type": "",
+      "name": "iSEI",
+      "symbol": "iSEI",
+      "displayName": "iSEI",
+      "displaySymbol": "iSEI",
+      "description": "",
+      "category": "",
+      "icon": "https://pit.finance/icons/tokens/png/isei.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": "silo-staked-sei"
+    },
+    "0x63e37028c1740303e8456962e6ddf98359fe0bdc": {
+      "address": "0x63e37028c1740303e8456962e6ddf98359fe0bdc",
+      "underlyingTokensAddresses": [
+        "0xe30fedd158a2e3b13e9badaeabafc5516e95e8c7"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-pWSEI",
+      "symbol": "pWSEI",
+      "displayName": "Pit VaultV3-pWSEI",
+      "displaySymbol": "pWSEI",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://pit.finance/icons/tokens/png/psei.png",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": ""
+    },
+    "0x80eede496655fb9047dd39d9f418d5483ed600df": {
+      "address": "0x80eede496655fb9047dd39d9f418d5483ed600df",
+      "underlyingTokensAddresses": [
+        "0x80eede496655fb9047dd39d9f418d5483ed600df"
+      ],
+      "type": "Yearn Vault",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "displayName": "Frax",
+      "displaySymbol": "FRAX",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://app.yei.finance/icons/tokens/frax.svg",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": "frax"
+    },
+    "0xb75d0b03c06a926e488e2659df1a861f860bd3d1": {
+      "address": "0xb75d0b03c06a926e488e2659df1a861f860bd3d1",
+      "underlyingTokensAddresses": [],
+      "type": "",
+      "name": "USDT",
+      "symbol": "USDT",
+      "displayName": "USDT",
+      "displaySymbol": "USDT",
+      "description": "",
+      "category": "",
+      "icon": "https://pit.finance/icons/tokens/png/usdt.png",
+      "decimals": 6,
+      "chainID": 1329,
+      "coingeckoId": "tether"
+    },
+    "0xe30fedd158a2e3b13e9badaeabafc5516e95e8c7": {
+      "address": "0xe30fedd158a2e3b13e9badaeabafc5516e95e8c7",
+      "underlyingTokensAddresses": [],
+      "type": "",
+      "name": "Wrapped SEI",
+      "symbol": "WSEI",
+      "displayName": "Wrapped SEI",
+      "displaySymbol": "WSEI",
+      "description": "",
+      "category": "",
+      "icon": "https://pit.finance/icons/tokens/png/wsei.png",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": "wrapped-sei"
+    },
+    "0xe8d7f53173bb5d0c898e4d576e4e297cb2859472": {
+      "address": "0xe8d7f53173bb5d0c898e4d576e4e297cb2859472",
+      "underlyingTokensAddresses": [
+        "0x80eede496655fb9047dd39d9f418d5483ed600df"
+      ],
+      "type": "Yearn Vault",
+      "name": "Pit VaultV3-pFRAX",
+      "symbol": "pFRAX",
+      "displayName": "Pit VaultV3-pFRAX",
+      "displaySymbol": "pFRAX",
+      "description": "",
+      "category": "yVault",
+      "icon": "https://app.yei.finance/icons/tokens/frax.svg",
+      "decimals": 18,
+      "chainID": 1329,
+      "coingeckoId": ""
+    }
+  }
+}

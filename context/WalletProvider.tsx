@@ -32,10 +32,10 @@ const generateBalance = (): string => {
 };
 
 // Generate random avatar URL from DiceBear
-const generateAvatar = (): string => {
+export const generateAvatar = (address: string = ''): string => {
   const styles = ['avataaars', 'big-smile', 'bottts', 'identicon', 'initials', 'pixel-art'];
   const style = styles[Math.floor(Math.random() * styles.length)];
-  const seed = Math.random().toString(36).substring(7);
+  const seed = address || Math.random().toString(36).substring(7);
   return `https://api.dicebear.com/7.x/${style}/svg?seed=${seed}&backgroundColor=random`;
 };
 

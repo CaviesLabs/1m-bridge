@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "es6"],
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "lib": ["dom", "dom.iterable", "es6", "es2020"],
+    "target": "es2020",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

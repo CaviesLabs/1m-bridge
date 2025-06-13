@@ -31,7 +31,7 @@ export function BridgeProvider({ children }: { children: React.ReactNode }) {
   const startBridge = useCallback(async () => {
     setCurrentStep('signing');
     setIsSigning(true);
-    
+
     // Simulate transaction signing delay
     setTimeout(() => {
       setIsSigning(false);
@@ -52,7 +52,7 @@ export function BridgeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <BridgeContext.Provider 
+    <BridgeContext.Provider
       value={{
         currentStep,
         isWalletConnected,
@@ -61,7 +61,7 @@ export function BridgeProvider({ children }: { children: React.ReactNode }) {
         connectWallet,
         startBridge,
         claimTokens,
-        reset
+        reset,
       }}
     >
       {children}
