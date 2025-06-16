@@ -1,30 +1,31 @@
-import type { Chain } from "viem/chains";
-import { ChainConfig, ChainKey } from "@/lib/entities/chain.entity";
-import * as atlantic2Tokens from "@/lib/constants/token/atlantic-2";
-import * as pacific1Tokens from "@/lib/constants/token/pacific-1";
-import * as arctic1Tokens from "@/lib/constants/token/arctic-1";
+import * as arctic1Tokens from '@/lib/constants/token/arctic-1';
+import * as atlantic2Tokens from '@/lib/constants/token/atlantic-2';
+import * as pacific1Tokens from '@/lib/constants/token/pacific-1';
+import { ChainConfig, ChainKey } from '@/lib/entities/chain.entity';
+import type { Chain } from 'viem/chains';
 
 export const META_DATA_MODAL = {};
 
 export const RPC_URLS: Record<ChainKey, string> = {
-  [ChainKey.ARCTIC_1]: "https://evm-rpc-arctic-1.sei-apis.com",
-  [ChainKey.ATLANTIC_2]: "https://evm-rpc-testnet.sei-apis.com",
-  [ChainKey.PACIFIC_1]: "https://evm-rpc.sei-apis.com",
+  [ChainKey.ARCTIC_1]: 'https://evm-rpc-arctic-1.sei-apis.com',
+  [ChainKey.ATLANTIC_2]: 'https://evm-rpc-testnet.sei-apis.com',
+  [ChainKey.PACIFIC_1]: 'https://evm-rpc.sei-apis.com',
+  [ChainKey.SOLANA]: 'https://api.mainnet-beta.solana.com',
 };
 
-const NATIVE_CURRENCY = { name: "SEI", symbol: "SEI", decimals: 18 };
+const NATIVE_CURRENCY = { name: 'SEI', symbol: 'SEI', decimals: 18 };
 
 const BLOCK_EXPLORERS: { default: Record<string, string> } = {
-  default: { name: "Seitrace", url: "https://seitrace.com" },
+  default: { name: 'Seitrace', url: 'https://seitrace.com' },
 };
 
 export const PACIFIC_1_CONFIG = {
   id: 1329,
-  name: "SEI",
+  name: 'SEI',
   nativeCurrency: NATIVE_CURRENCY,
   rpcUrls: {
-    default: { http: [RPC_URLS["pacific-1"]] },
-    public: { http: [RPC_URLS["pacific-1"]] },
+    default: { http: [RPC_URLS['pacific-1']] },
+    public: { http: [RPC_URLS['pacific-1']] },
   },
   blockExplorers: BLOCK_EXPLORERS,
 } as unknown as Chain;
@@ -32,7 +33,7 @@ export const PACIFIC_1_CONFIG = {
 export const PACIFIC_1_CHAIN = ChainConfig.fromEntity({
   chainId: 1329,
   disabled: false,
-  chainName: "pacific-1 (mainnet)",
+  chainName: 'pacific-1 (mainnet)',
   chainKey: ChainKey.PACIFIC_1,
   config: PACIFIC_1_CONFIG,
   rpcUrl: RPC_URLS[ChainKey.PACIFIC_1],
@@ -54,11 +55,11 @@ export const PACIFIC_1_CHAIN = ChainConfig.fromEntity({
 
 export const ARCTIC_1_CONFIG = {
   id: 713715,
-  name: "SEI DevNet",
+  name: 'SEI DevNet',
   nativeCurrency: NATIVE_CURRENCY,
   rpcUrls: {
-    default: { http: [RPC_URLS["arctic-1"]] },
-    public: { http: [RPC_URLS["arctic-1"]] },
+    default: { http: [RPC_URLS['arctic-1']] },
+    public: { http: [RPC_URLS['arctic-1']] },
   },
   blockExplorers: BLOCK_EXPLORERS,
 } as unknown as Chain;
@@ -66,7 +67,7 @@ export const ARCTIC_1_CONFIG = {
 export const ARCTIC_1_CHAIN = ChainConfig.fromEntity({
   chainId: 713715,
   disabled: false,
-  chainName: "arctic-1 (devnet)",
+  chainName: 'arctic-1 (devnet)',
   chainKey: ChainKey.ARCTIC_1,
   config: ARCTIC_1_CONFIG,
   rpcUrl: RPC_URLS[ChainKey.ARCTIC_1],
@@ -88,11 +89,11 @@ export const ARCTIC_1_CHAIN = ChainConfig.fromEntity({
 
 export const ATLANTIC_2_CONFIG = {
   id: 1328,
-  name: "SEI Testnet",
+  name: 'SEI Testnet',
   nativeCurrency: NATIVE_CURRENCY,
   rpcUrls: {
-    default: { http: [RPC_URLS["atlantic-2"]] },
-    public: { http: [RPC_URLS["atlantic-2"]] },
+    default: { http: [RPC_URLS['atlantic-2']] },
+    public: { http: [RPC_URLS['atlantic-2']] },
   },
   blockExplorers: BLOCK_EXPLORERS,
 } as unknown as Chain;
@@ -100,7 +101,7 @@ export const ATLANTIC_2_CONFIG = {
 export const ATLANTIC_2_CHAIN = ChainConfig.fromEntity({
   chainId: 1328,
   disabled: false,
-  chainName: "atlantic-2 (testnet)",
+  chainName: 'atlantic-2 (testnet)',
   chainKey: ChainKey.ATLANTIC_2,
   config: ATLANTIC_2_CONFIG,
   rpcUrl: RPC_URLS[ChainKey.ATLANTIC_2],

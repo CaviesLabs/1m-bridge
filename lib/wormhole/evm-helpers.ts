@@ -1,13 +1,16 @@
 import { isWormholeMessageId, type WormholeMessageId } from '@wormhole-foundation/sdk';
 import { EvmAddress } from '@wormhole-foundation/sdk-evm';
 
+// @ts-ignore
 export async function parseTransaction(chain: any, receipt: any, coreAddress: string) {
   return receipt.logs
     .filter((l: any) => {
       return l.address === coreAddress;
     })
-    .map(log => {
+    .map((log: any) => {
       const { topics, data } = log;
+
+      // @ts-ignore
       const parsed = this.coreIface.parseLog({
         topics: topics.slice(),
         data,

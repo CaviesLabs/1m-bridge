@@ -2,7 +2,7 @@
 
 import { ChevronDown, Globe, Menu, Moon, Sun } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLanguage } from './LanguageProvider';
 import { useTheme } from './ThemeProvider';
 import { Button } from './ui/button';
@@ -29,33 +29,33 @@ export function Header() {
   const isBelowBreakpoint = useBreakpoint(1060);
 
   // Scroll detection
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      setIsScrolled(currentScrollY > 50);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
+  //     setScrollY(currentScrollY);
+  //     setIsScrolled(currentScrollY > 50);
 
-      // Detect current section for active navigation
-      const sections = ['#', '#analytics', '#faq', '#docs'];
-      const sectionElements = sections.map(section =>
-        section === '#' ? document.querySelector('main') : document.querySelector(section)
-      );
+  //     // Detect current section for active navigation
+  //     const sections = ['#', '#analytics', '#faq', '#docs'];
+  //     const sectionElements = sections.map(section =>
+  //       section === '#' ? document.querySelector('main') : document.querySelector(section)
+  //     );
 
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const element = sectionElements[i];
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(sections[i]);
-            break;
-          }
-        }
-      }
-    };
+  //     for (let i = sectionElements.length - 1; i >= 0; i--) {
+  //       const element = sectionElements[i];
+  //       if (element) {
+  //         const rect = element.getBoundingClientRect();
+  //         if (rect.top <= 100) {
+  //           setActiveSection(sections[i]);
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   const LanguageSwitcher = ({ className = '' }: { className?: string }) => (
     <div className={`flex items-center gap-2 ${className}`}>

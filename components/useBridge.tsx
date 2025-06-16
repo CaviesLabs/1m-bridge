@@ -6,8 +6,8 @@ import { useSolana } from '@/context/useSolanaWallet';
 import type { TokenBalance } from '@/lib/entities/balance.entity';
 import type { Token } from '@/lib/entities/token.entity';
 import { initTransferInstance } from '@/lib/wormhole/token-transfer';
-// import { toast, ToastType } from '@/styles/toast';
 import { useCallback, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 import { usePublicClient, useWalletClient } from 'wagmi';
 import { useTheme } from './ThemeProvider';
 
@@ -89,19 +89,12 @@ export const useBridge = ({
       setBridgeData(bridgeData);
       refetchBalances();
 
-      // toast({
-      //   type: ToastType.success,
-      //   title: 'Bridge operation - Transfer tokens successful',
-      //   theme,
-      // });
+      toast.success('Bridge operation - Transfer tokens successful');
     } catch (error) {
       console.error('Bridge operation: ', error);
-      // toast({
-      //   type: ToastType.error,
-      //   title: 'Bridge operation',
-      //   description: error instanceof Error ? error.message : 'Unknown error',
-      //   theme,
-      // });
+      toast.warning('Bridge operation', {
+        description: error instanceof Error ? error.message : 'Unknown error',
+      });
 
       setIsLoading(false);
       throw error;
@@ -130,13 +123,9 @@ export const useBridge = ({
    */
   const handleClaim = useCallback(async () => {
     if (!claimFnc) {
-      return;
-      // return toast({
-      //   type: ToastType.error,
-      //   title: 'Claim operation',
-      //   description: 'Claim function is not initialized',
-      //   theme,
-      // });
+      return toast.error('Claim operation', {
+        description: 'Claim function is not initialized',
+      });
     }
 
     try {
@@ -145,21 +134,14 @@ export const useBridge = ({
       setIsSuccess(true);
       setIsBridgeMore(true);
       setStepBridge('completed');
-      // toast({
-      //   type: ToastType.success,
-      //   title: 'Claim operation',
-      //   description: 'Your tokens have been successfully claimed.',
-      //   theme,
-      // });
+      toast.success('Claim operation', {
+        description: 'Your tokens have been successfully claimed.',
+      });
     } catch (error) {
       console.error('Claim operation failed:', error);
-      return;
-      // toast({
-      //   type: ToastType.error,
-      //   title: 'Claim operation',
-      //   description: error instanceof Error ? error.message : 'Unknown error',
-      //   theme,
-      // });
+      toast.error('Claim operation', {
+        description: error instanceof Error ? error.message : 'Unknown error',
+      });
     } finally {
       setIsLoading(false);
       console.info('Claim complete');
