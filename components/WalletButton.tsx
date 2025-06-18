@@ -29,7 +29,7 @@ export function WalletButton({ size = 'default', className = '' }: WalletButtonP
   const handleCopyAddress = async () => {
     if (connector.address) {
       await navigator.clipboard.writeText(connector.address);
-      toast.success('Wallet address copied to clipboard');
+      toast.success(t.toast.walletAddressCopied);
     }
   };
 

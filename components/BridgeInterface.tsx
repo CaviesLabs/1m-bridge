@@ -6,11 +6,12 @@ import { Chain, CONNECTOR_METADATA, useGetConnectorList } from '@/context/useCon
 import { useInputBalance } from '@/context/useInputBalance';
 import { TokenBalance } from '@/lib/entities/balance.entity';
 import { AppNumber } from '@/lib/providers/math/app-number.provider';
-import { ArrowUpDown, ExternalLink, Info, Loader2, Wallet } from 'lucide-react';
+import { ArrowUpDown, ExternalLink, History, Info, Loader2, Wallet } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import { BridgeStepCards } from './BridgeStepCards';
 import { useLanguage } from './LanguageProvider';
+import { TransactionHistory } from './TransactionHistory';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -279,9 +280,7 @@ export function BridgeInterface() {
                           }}
                         >
                           <Wallet className="w-3 h-3 mr-1" />
-                          {sourceConnector.isConnected
-                            ? t.disconnectSourceWallet
-                            : t.connectSourceWallet}
+                          {sourceConnector.isConnected ? t.disconnectWallet : t.connectWallet}
                         </Badge>
                       </div>
                     </div>
@@ -362,9 +361,7 @@ export function BridgeInterface() {
                           }}
                         >
                           <Wallet className="w-3 h-3 mr-1" />
-                          {destinationConnector.isConnected
-                            ? t.disconnectDestinationWallet
-                            : t.connectDestinationWallet}
+                          {destinationConnector.isConnected ? t.disconnectWallet : t.connectWallet}
                         </Badge>
                       </div>
                     </div>
@@ -591,5 +588,89 @@ export function BridgeInterface() {
         </div>
       </motion.div>
     </>
+  );
+}
+
+export function BridgeInterfaceContainer() {
+  const [showTransactionHistory, setShowTransactionHistory] = useState(false);
+  const { t } = useLanguage();
+
+  // Container variants for smooth transitions
+  const containerVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.4, ease: 'easeOut' },
+    },
+    exit: {
+      opacity: 0,
+      x: 20,
+      transition: { duration: 0.3, ease: 'easeIn' },
+    },
+  };
+
+  return (
+    <div className="max-w-[1000px] mx-auto">
+      {/* Toggle Buttons */}
+      <div className="flex justify-center mb-8">
+        <div className="bg-muted/50 p-1 rounded-xl border border-border/50">
+          <div className="flex gap-1">
+            <Button
+              variant={!showTransactionHistory ? 'default' : 'ghost'}
+              size="sm"
+              onClick={() => setShowTransactionHistory(false)}
+              className={`px-6 py-2 transition-all duration-200 ${
+                !showTransactionHistory
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'hover:bg-accent'
+              }`}
+            >
+              <ArrowUpDown className="w-4 h-4 mr-2" />
+              {t.bridgeInterface}
+            </Button>
+            <Button
+              variant={showTransactionHistory ? 'default' : 'ghost'}
+              size="sm"
+              onClick={() => setShowTransactionHistory(true)}
+              className={`px-6 py-2 transition-all duration-200 ${
+                showTransactionHistory
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'hover:bg-accent'
+              }`}
+            >
+              <History className="w-4 h-4 mr-2" />
+              {t.viewTransactionHistory}
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Content Area */}
+      <AnimatePresence mode="wait">
+        {showTransactionHistory ? (
+          <motion.div
+            key="transaction-history"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <TransactionHistory onBack={() => setShowTransactionHistory(false)} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="bridge-interface"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="max-w-[1000px] mx-auto"
+          >
+            <BridgeInterface />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

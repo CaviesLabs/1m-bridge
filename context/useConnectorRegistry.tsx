@@ -9,7 +9,7 @@ import { type Chain as WormholeChain } from '@wormhole-foundation/sdk-connect';
 import { useMemo } from 'react';
 import { usePublicClient, useWalletClient } from 'wagmi';
 
-export type Chain = 'solana' | 'evm';
+export type Chain = 'solana' | 'seievm' | 'evm';
 
 export type Connector = {
   chain: Chain;
@@ -46,6 +46,13 @@ export const CONNECTOR_METADATA: Record<
   },
   evm: {
     chain: 'evm',
+    chainName: 'Seievm',
+    icon: '/icons/tokens/sei.svg',
+    name: 'SEI',
+    whiteListToken: [SeiTokens.USDC, SeiTokens.USDT],
+  },
+  seievm: {
+    chain: 'seievm',
     chainName: 'Seievm',
     icon: '/icons/tokens/sei.svg',
     name: 'SEI',
@@ -89,6 +96,18 @@ export const useGetConnectorList = (): Record<Chain, Connector> => {
         disconnect: evm.disconnect,
         executor: getEvmSignerExecuter(walletClient as any, publicClient),
       },
+      seievm: {
+        chain: CONNECTOR_METADATA.evm.chain,
+        chainName: CONNECTOR_METADATA.evm.chainName,
+        icon: CONNECTOR_METADATA.evm.icon,
+        name: CONNECTOR_METADATA.evm.name,
+        isConnected: evm.isConnected,
+        isDisconnected: evm.isDisconnected,
+        address: evm.rpcSigner?.address || '',
+        connect: evm.connect,
+        disconnect: evm.disconnect,
+        executor: getEvmSignerExecuter(walletClient as any, publicClient),
+      },
     };
   }, [solana, evm]);
 };
@@ -102,7 +121,7 @@ export const useGetConnectorList = (): Record<Chain, Connector> => {
  * @returns The connector for the given chain.
  */
 export const useConnectorRegistry = (chain: Chain): Connector | null => {
-  const { evm, solana } = useGetConnectorList();
+  const { evm, solana, seievm } = useGetConnectorList();
 
   return useMemo(() => {
     switch (chain) {
@@ -110,6 +129,8 @@ export const useConnectorRegistry = (chain: Chain): Connector | null => {
         return solana;
       case 'evm':
         return evm;
+      case 'seievm':
+        return seievm;
       default:
         return null;
     }

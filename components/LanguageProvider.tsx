@@ -7,7 +7,6 @@ type Language = 'en' | 'vi';
 interface Translations {
   // Header
   bridge: string;
-  connectWallet: string;
 
   // Hero Section
   bridgeAndEarn: string;
@@ -44,6 +43,8 @@ interface Translations {
   importantNote: string;
   fromChain: string;
   toChain: string;
+  connectWallet: string;
+  disconnectWallet: string;
   connectSourceWallet: string;
   connectDestinationWallet: string;
   disconnectSourceWallet: string;
@@ -56,6 +57,39 @@ interface Translations {
   bridgeFee: string;
   gasFee: string;
   youWillReceive: string;
+
+  // Transaction History
+  transactionHistory: string;
+  transaction: string;
+  date: string;
+  amount: string;
+  status: string;
+  claim: string;
+  export: string;
+  claimable: string;
+  failed: string;
+  transactionHashCopied: string;
+  tokensClaimedSuccessfully: string;
+  claimFailed: string;
+  claimedFromTransaction: string;
+  showingTransactions: string;
+  totalBridged: string;
+  totalRewards: string;
+  dateLocale: string;
+  viewTransactionHistory: string;
+  backToBridge: string;
+
+  // Toast Notifications
+  transactionSignedDescription: string;
+  claimingTokens: string;
+  bridgeCompleted: string;
+  bridgeCompletedDescription: string;
+  bridgeTransactionFailed: string;
+  bridgeTransactionFailedDescription: string;
+  claimTransactionFailed: string;
+  claimTransactionFailedDescription: string;
+  tryAgain: string;
+  newBridge: string;
 
   // Info Cards
   secure: string;
@@ -118,6 +152,27 @@ interface Translations {
   walletDisconnectDescription: string;
   walletCopyAddress: string;
   connecting: string;
+
+  // Toast
+  toast: {
+    walletAddressCopied: string;
+    claimOperation: string;
+    claimOperationDescription: string;
+  };
+
+  // Error
+  error: {
+    claimOperation: string;
+    claimOperationDescription: string;
+  };
+
+  page: string;
+  of: string;
+  claimTooltip: string;
+  action: string;
+  noTransactions: string;
+
+  connectWalletsFirst: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -125,6 +180,7 @@ const translations: Record<Language, Translations> = {
     // Header
     bridge: 'Bridge',
     connectWallet: 'Connect Wallet',
+    disconnectWallet: 'Disconnect Wallet',
 
     // Hero Section
     bridgeAndEarn: 'BRIDGE & EARN',
@@ -174,6 +230,43 @@ const translations: Record<Language, Translations> = {
     bridgeFee: 'Bridge fee',
     gasFee: 'Gas fee (estimated)',
     youWillReceive: 'You will receive',
+
+    // Transaction History
+    transactionHistory: 'Transaction History',
+    transaction: 'Transaction',
+    date: 'Date',
+    amount: 'Amount',
+    status: 'Status',
+    claim: 'Claim',
+    export: 'Export',
+    claimable: 'Claimable',
+    failed: 'Failed',
+    transactionHashCopied: 'Transaction hash copied to clipboard',
+    tokensClaimedSuccessfully: 'Tokens claimed successfully!',
+    claimFailed: 'Claim failed',
+    claimedFromTransaction: 'claimed from transaction',
+    showingTransactions: 'Showing {count} transactions',
+    totalBridged: 'Total Bridged',
+    totalRewards: 'Total Rewards',
+    dateLocale: 'en-US',
+    viewTransactionHistory: 'View Transaction History',
+    backToBridge: 'Back to Bridge',
+
+    // Toast Notifications
+    transactionSignedDescription:
+      'Your bridge transaction has been successfully signed and submitted to the network',
+    claimingTokens: 'Claiming tokens...',
+    bridgeCompleted: 'Bridge completed successfully! 🎉',
+    bridgeCompletedDescription:
+      'Your tokens have been successfully bridged to the destination chain',
+    bridgeTransactionFailed: 'Bridge transaction failed',
+    bridgeTransactionFailedDescription:
+      'The bridge transaction could not be completed. Please check your wallet and try again.',
+    claimTransactionFailed: 'Claim transaction failed',
+    claimTransactionFailedDescription:
+      'Unable to claim tokens on the destination chain. Please try again.',
+    tryAgain: 'Try Again',
+    newBridge: 'New Bridge',
 
     // Info Cards
     secure: 'Secure',
@@ -248,12 +341,34 @@ const translations: Record<Language, Translations> = {
     walletDisconnectDescription: 'Sign out of your wallet',
     walletCopyAddress: 'Copy address',
     connecting: 'Connecting...',
+
+    // Toast
+    toast: {
+      walletAddressCopied: 'Địa chỉ ví đã được sao chép',
+      claimOperation: 'Thao tác nhận',
+      claimOperationDescription: 'Hàm nhận không được khởi tạo',
+    },
+
+    // Error
+    error: {
+      claimOperation: 'Claim operation',
+      claimOperationDescription: 'Claim function is not initialized',
+    },
+
+    page: 'Page',
+    of: 'of',
+    claimTooltip: "Only works if you haven't claimed your bridged tokens yet",
+    action: 'Action',
+    noTransactions: 'No transactions found',
+
+    connectWalletsFirst: 'Please connect both wallets first',
   },
 
   vi: {
     // Header
     bridge: 'Cầu nối',
     connectWallet: 'Kết nối ví',
+    disconnectWallet: 'Ngắt kết nối ví',
 
     // Hero Section
     bridgeAndEarn: 'CẦU NỐI & KIẾM THƯỞNG',
@@ -266,7 +381,7 @@ const translations: Record<Language, Translations> = {
     crossChainBridge: 'Cầu nối chuỗi chéo',
     bridgeYourAssets: 'Chuyển tài sản của bạn',
     bridgeYourAssetsDescription:
-      'Chuyển token một cách liền mạch qua các blockchain khác nhau và kiếm phần thưởng trong chiến dịch đang hoạt động',
+      'Chuyển token một cách mượt mà giữa các blockchain khác nhau và nhận thưởng từ chiến dịch đang diễn ra.',
     sendTokens: 'Gửi Token',
     sendTokensDescription: 'Chọn blockchain nguồn và bắt đầu giao dịch cầu nối',
     claimTokens: 'Nhận Token',
@@ -285,10 +400,10 @@ const translations: Record<Language, Translations> = {
 
     // Bridge Interface
     bridgeInterface: 'Giao diện cầu nối',
-    bridgeInterfaceDescription: 'Chuyển tài sản qua các blockchain chỉ với vài cú click',
+    bridgeInterfaceDescription: 'Chuyển tài sản giữa các blockchain chỉ với vài cú click',
     important: 'Quan trọng:',
     importantNote:
-      'Cầu nối chuỗi chéo yêu cầu 2 giao dịch riêng biệt. Đầu tiên, bạn sẽ ký giao dịch trên blockchain nguồn, sau đó nhận token trên blockchain đích.',
+      'Việc chuyển tài sản giữa các blockchain gồm 2 bước. Bạn sẽ thực hiện giao dịch đầu tiên trên chuỗi nguồn, sau đó nhận token của mình trên chuỗi đích.',
     fromChain: 'Từ blockchain',
     toChain: 'Đến blockchain',
     connectSourceWallet: 'Kết nối ví nguồn',
@@ -304,12 +419,47 @@ const translations: Record<Language, Translations> = {
     gasFee: 'Phí gas (ước tính)',
     youWillReceive: 'Bạn sẽ nhận được',
 
+    // Transaction History
+    transactionHistory: 'Lịch sử giao dịch',
+    transaction: 'Giao dịch',
+    date: 'Ngày',
+    amount: 'Số lượng',
+    status: 'Trạng thái',
+    claim: 'Nhận',
+    export: 'Xuất',
+    claimable: 'Có thể nhận',
+    failed: 'Thất bại',
+    transactionHashCopied: 'Đã sao chép mã hash giao dịch',
+    tokensClaimedSuccessfully: 'Nhận token thành công!',
+    claimFailed: 'Nhận token thất bại',
+    claimedFromTransaction: 'đã nhận từ giao dịch',
+    showingTransactions: 'Hiển thị {count} giao dịch',
+    totalBridged: 'Tổng đã chuyển',
+    totalRewards: 'Tổng phần thưởng',
+    dateLocale: 'vi-VN',
+    viewTransactionHistory: 'Xem lịch sử giao dịch',
+    backToBridge: 'Quay lại cầu nối',
+
+    // Toast Notifications
+    transactionSignedDescription: 'Giao dịch cầu nối của bạn đã được ký thành công và gửi lên mạng',
+    claimingTokens: 'Đang nhận token...',
+    bridgeCompleted: 'Cầu nối hoàn thành thành công! 🎉',
+    bridgeCompletedDescription: 'Token của bạn đã được chuyển thành công đến blockchain đích',
+    bridgeTransactionFailed: 'Giao dịch cầu nối thất bại',
+    bridgeTransactionFailedDescription:
+      'Không thể hoàn thành giao dịch cầu nối. Vui lòng kiểm tra ví của bạn và thử lại.',
+    claimTransactionFailed: 'Giao dịch nhận token thất bại',
+    claimTransactionFailedDescription:
+      'Không thể nhận token trên blockchain đích. Vui lòng thử lại.',
+    tryAgain: 'Thử lại',
+    newBridge: 'Cầu nối mới',
+
     // Info Cards
     secure: 'An toàn',
     secureDescription: 'Hợp đồng thông minh đã được kiểm toán và bảo mật đã được thử nghiệm',
     fast: 'Nhanh chóng',
     fastDescription: 'Hoàn thành chuyển đổi trong vòng 5 phút',
-    rewarding: 'Có lãi',
+    rewarding: 'Phần thưởng',
     rewardingDescription: 'Kiếm tiền từ quỹ chiến dịch 1 triệu đô của chúng tôi',
 
     // Terms
@@ -378,6 +528,27 @@ const translations: Record<Language, Translations> = {
     walletDisconnectDescription: 'Đăng xuất khỏi ví',
     walletCopyAddress: 'Sao chép địa chỉ',
     connecting: 'Đang kết nối...',
+
+    // Toast
+    toast: {
+      walletAddressCopied: 'Địa chỉ ví đã được sao chép',
+      claimOperation: 'Thao tác nhận',
+      claimOperationDescription: 'Hàm nhận không được khởi tạo',
+    },
+
+    // Error
+    error: {
+      claimOperation: 'Thao tác nhận',
+      claimOperationDescription: 'Hàm nhận không được khởi tạo',
+    },
+
+    page: 'Trang',
+    of: 'của',
+    claimTooltip: 'Chỉ hoạt động nếu bạn chưa nhận token đã chuyển',
+    action: 'Hành động',
+    noTransactions: 'Không tìm thấy giao dịch nào',
+
+    connectWalletsFirst: 'Vui lòng kết nối cả hai ví trước',
   },
 };
 

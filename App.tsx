@@ -3,7 +3,7 @@
 import { Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Provider } from 'react-redux';
-import { BridgeInterface } from './components/BridgeInterface';
+import { BridgeInterfaceContainer } from './components/BridgeInterface';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { FAQSection, TermsSection } from './components/InfoSections';
@@ -118,7 +118,7 @@ function AppContent() {
               </motion.div>
 
               {/* Bridge Interface Container */}
-              <BridgeInterface />
+              <BridgeInterfaceContainer />
 
               {/* Enhanced Additional Info Cards */}
               <motion.div
