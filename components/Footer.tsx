@@ -1,6 +1,7 @@
 'use client';
 
 import { Github, MessageCircle, Twitter } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useLanguage } from './LanguageProvider';
 
 export function Footer() {
@@ -13,10 +14,17 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">{t.bridge}</span>
+              <img src="/icons/logo.svg" alt="logo" className="w-10 h-10" />
+              <motion.span
+                className="font-bold text-foreground"
+                style={{ fontSize: '20px' }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut',
+                }}
+              >
+                1MBridge
+              </motion.span>
             </div>
             <p className="text-muted-foreground text-sm">{t.footerDescription}</p>
           </div>

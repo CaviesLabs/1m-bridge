@@ -182,7 +182,7 @@ export function Header() {
                   }}
                   onClick={() => handleNavClick('#')}
                 >
-                  <motion.div
+                  {/* <motion.div
                     className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center"
                     animate={{
                       width: isScrolled ? '28px' : '32px',
@@ -205,7 +205,8 @@ export function Header() {
                     >
                       B
                     </motion.span>
-                  </motion.div>
+                  </motion.div> */}
+                  <img src="/icons/logo.svg" alt="logo" className="w-10 h-10" />
                   <motion.span
                     className="font-bold text-foreground"
                     animate={{
@@ -216,7 +217,7 @@ export function Header() {
                       ease: 'easeInOut',
                     }}
                   >
-                    {t.bridge}
+                    1MBridge
                   </motion.span>
                 </motion.div>
 
